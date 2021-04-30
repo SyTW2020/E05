@@ -11,7 +11,8 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LoginComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
