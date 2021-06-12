@@ -18,6 +18,6 @@ script:
   - cd ./DateMaker
   - npm install
   - npm run lint
-  - npm run test:headless
+  - npm run test
   - npm run build
-  - npm run e2e
+  - xvfb-run npm run e2e
