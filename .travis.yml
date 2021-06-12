@@ -4,7 +4,7 @@ notifications:
   slack: sytwull:1W2xlnDCFR0EYEUbKUFcDwJj
 
 node_js:
-  - "11"
+  - "12"
 dist: trusty
 
 cache:
