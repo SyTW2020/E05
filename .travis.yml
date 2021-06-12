@@ -1,0 +1,23 @@
+language: node_js
+
+notifications:
+  slack: sytwull:1W2xlnDCFR0EYEUbKUFcDwJj
+
+node_js:
+  - "12"
+dist: trusty
+
+cache:
+  directories:
+    - node_modules
+
+addons:
+  chrome: stable
+
+script:
+  - cd ./DateMaker
+  - npm install
+  - npm run lint
+ # - npm run test
+  - npm run build
+ # - npm run e2e
