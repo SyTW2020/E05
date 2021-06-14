@@ -17,5 +17,5 @@ Given(/^I am on the home page$/, async () => {
 When(/^I do nothing$/, () => {});
 
 Then('I should see the tittle', async () => {
-    assert(expect(await page.getTitleText()), "DateMaker")
+    assert(expect(await page.getTitleText()), 'DateMaker');
 });
