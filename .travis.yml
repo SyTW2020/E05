@@ -12,7 +12,7 @@ cache:
     - node_modules
 
 addons:
-  chrome: beta
+  firefox: "49.0"
 
 script:
   - cd ./DateMaker
