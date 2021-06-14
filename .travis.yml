@@ -20,5 +20,5 @@ script:
   - npm run lint
  # - npm run test
   - npm run build
-  - webdriver-manager update
+  - webdriver-manager --chrome update
   - xvfb-run npm run e2e
