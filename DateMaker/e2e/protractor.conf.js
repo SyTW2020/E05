@@ -5,10 +5,10 @@ exports.config = {
   allScriptsTimeout: 11000,
   specs: ['./src/features/**/*.feature'],
   capabilities: {
-    browserName: 'chrome'
+    browserName: 'firefox'
   },
   directConnect: true,
-  SELENIUM_PROMISE_MANAGER: false,
+  // SELENIUM_PROMISE_MANAGER: false,
   baseUrl: 'http://localhost:4200/',
   framework: 'custom',
   frameworkPath: require.resolve('protractor-cucumber-framework'),
