@@ -26,4 +26,4 @@ script:
   - npm run build
   - webdriver-manager update
   - xvfb-run npm run e2e
-  - sonar-scanner
+  - sonar-scanner -X
