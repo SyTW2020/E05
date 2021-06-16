@@ -4,7 +4,7 @@ const userSchema = new Schema({
     email: String,
     password: String,
     cursos: [{
-        curso:String,
+        curso: String,
         asignaturas: [{
             nombre: String,
             codigo: String,
