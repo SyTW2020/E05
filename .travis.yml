@@ -5,7 +5,7 @@ notifications:
 
 node_js:
   - "12"
-dist: trusty
+dist: xenial
 
 cache:
   directories:
@@ -26,4 +26,4 @@ script:
   - npm run build
   - webdriver-manager update
   - xvfb-run npm run e2e
-  # - sonar-scanner
+  - sonar-scanner
