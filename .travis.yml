@@ -12,7 +12,7 @@ cache:
     - node_modules
 
 addons:
-  chrome: stable
+  firefox: "89.0"
 
 script:
   - cd ./DateMaker
@@ -20,4 +20,5 @@ script:
   - npm run lint
  # - npm run test
   - npm run build
- # - npm run e2e
+  - webdriver-manager update
+  - xvfb-run npm run e2e
