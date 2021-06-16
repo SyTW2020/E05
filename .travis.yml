@@ -10,6 +10,7 @@ dist: xenial
 cache:
   directories:
     - node_modules
+    - "$HOME/.sonar/cache"
 
 addons:
   firefox: "89.0"
