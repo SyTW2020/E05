@@ -13,6 +13,10 @@ cache:
 
 addons:
   chrome: stable
+  sonarcloud:
+  organization: "sytw2020" # the key of the org you chose at step #3
+  token:
+    secure: 27c0b31dec57713f3af351e7ed3841f9927290f0 # encrypted value of your token
 
 script:
   - cd ./DateMaker
