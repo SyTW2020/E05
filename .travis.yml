@@ -5,7 +5,7 @@ notifications:
 
 node_js:
   - "12"
-dist: trusty
+dist: xenial
 
 cache:
   directories:
@@ -13,6 +13,10 @@ cache:
 
 addons:
   firefox: "89.0"
+  sonarcloud:
+    organization: "sytw2020"
+    token:
+      secure: "SBl6BxcCjo9oVtgFU7Gb3dbqAUbnQi4WQ2Sm/mG0xmDnY33EjkDW5BwAWB2NdHKkjWqkPaQO3MMOnph1wzqa2udVmwYvLvirByLiguZuebNJS9/ZBU3TuMp4DkRSAPgf72MVxrgTBEsAzgpVBAl+bSSVUkO1zZ/ph0eGw07Y8ce1RfwgQER11v3ZKt6VHkdcqXt+eaweTXFHTsgfcQAROHrTq91SpQuC2/UNdwUBbCt2oUwnytQRFhThR02xSod0hg9SvD7EQSGo/xpo6RcoClB65aFDcw9wGqdduPrddLLFRrGiECP5lWkjgxawQo6XSAnOaHeJN3vAOOXTSeEVYozEbFPJMK2Nhe4QrAx5UiYno6Mlqi0dChL5VQdCInlM0vSLhnEzqUaEGjna4fXHGx7KTdKm3y5sYgAPmnVCvJyc+v6ukfXiEsC/ldKN8zTETxCIb2NkRaHUQZdOfRx6SjNb/1nGgPrVJDM0QhbWloex7rzBoNjEBMX4bEK8pGSzNCpsJ8F/WhmkG+ZjR+bAsOgNdM9S0dKqAXi7Es2/eEkWaLyGakny2GTWAndT99wpthqatrvO5D5Y7ozy452EwPhVYKG53CJgrrAu6HaW+dFl3A4rzz73bcrdSUobPs7h1T7BHTHfg+HiUTWBPUV2IsetVy59EkAjPKwVCp1X1Ow=" # encrypted value of your token
 
 script:
   - cd ./DateMaker
@@ -22,3 +26,4 @@ script:
   - npm run build
   - webdriver-manager update
   - xvfb-run npm run e2e
+  - sonar-scanner
