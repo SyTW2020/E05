@@ -1,0 +1,42 @@
+<p>
+    <mat-toolbar>
+      <span>My Application</span>
+      <span class="example-spacer"></span>
+      <a mat-button [routerLink]="['/log-in'] ">Log In</a>
+      <a mat-button [routerLink]="['/sign-up']">Sign Ip</a>
+    </mat-toolbar>
+</p>
+<div class="center">
+    <mat-card>
+        <mat-card-title>Log In</mat-card-title>
+        <form id= "login form" (ngSubmit)="onSubmit()"ngNativeValidate>
+            <div class="container">
+                <mat-form-field class="mail" appearance="fill">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" [formControl]="email" [(ngModel)]="user.email"
+                    name="email"
+                    type="email"
+                    required
+                    class="form-control"
+                    id="email">
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="password" appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="user.password"
+                    name="password"
+                    type="password"
+                    required
+                    class="form-control"
+                    id="password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <br>
+                <button type="submit" mat-raised-button>Login</button>
+            </div>
+        </form>
+    </mat-card>
+</div>
