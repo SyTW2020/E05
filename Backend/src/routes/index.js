@@ -35,22 +35,31 @@ router.post('/sin', async (req,res) => {
 //crear curso
 router.post('/cursos', verifyToken, async (req, res) => {
     const {nombre} = req.body;
-    const user = await User.findOne({_id:req.userId, 'cursos.curso':nombre});
-    if (!user) {
-        await User.updateOne({_id:req.userId}, {$push: {cursos: {curso:nombre}}});
-        res.status(200).send('Curso added');
+    const user = await User.findOne({_id:req.userId}, {cursos:[]});
+    var flag = false;
+    user.cursos.forEach(element => {
+        if (element.curso == nombre)
+            flag = true;
+    }); 
+    if (!flag) {
+        user.cursos.push({curso:nombre});
+        await user.save().then((user) => {
+            res.status(200).json({user});
+        }); 
     }
-    res.status(200).send('Name already exists');
+    else
+        res.status(204).json({user});
 });
 //lista de cursos
 router.get('/cursos', verifyToken, async (req, res) => {
-    const user = await User.findOne({_id:req.userId});
+    const user = await User.findOne({_id:req.userId}, {cursos:[]});
     res.status(200).json({user});
 });
 //borrar curso
 router.delete('/cursos', verifyToken, async (req, res) => {
     const {nombre} = req.body;
-    const user = await User.updateOne({_id:req.userId}, {$pull: {cursos: {curso:nombre}}});
+    await User.updateOne({_id:req.userId}, {$pull: {cursos: {curso:nombre}}});
+    const user = await User.findOne({_id:req.userId}, {cursos:[]});
     res.status(200).json({user});
 });
 
@@ -68,10 +77,12 @@ router.post('/cursos/:name', verifyToken, async (req, res) => {
     })
     if (!flag){
         user.cursos[0].asignaturas.push({nombre, codigo, practicas, teoria, grupos})
-        await user.save();
+        await user.save().then((user) => {
+            res.status(200).json({user});
+        }); 
     }
     else 
-        console.log('Duplicadao');
+        res.status(204).json({user});
 });
 
 //lista de asignaturas asignaturas en curso
@@ -93,8 +104,9 @@ router.delete('/cursos/:name', verifyToken, async (req, res) => {
         cont += 1;
     })
     user.cursos[0].asignaturas.splice(index,1);
-    await user.save();
-    console.log(user);
+    await user.save().then((user) => {
+        res.status(200).json({user});
+    }); 
 });
 
 module.exports = router;
