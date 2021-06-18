@@ -1,1 +1,15 @@
+<p>
+    <mat-toolbar>
+      <span>My Application</span>
+      <span class="example-spacer"></span>
+      <ng-container *ngIf="!authService.logged(); else loggedIn">
+        <a mat-button [routerLink]="['/login'] ">Log In</a>
+        <a mat-button [routerLink]="['/signup']">Sign Up</a>
+      </ng-container>
+      <ng-template #loggedIn>
+        <a mat-button color="warn"(click)="authService.logout()">Logout</a>
+      </ng-template>
+    </mat-toolbar>
+</p>
+
 <router-outlet></router-outlet>
