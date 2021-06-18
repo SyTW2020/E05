@@ -17,7 +17,7 @@ router.post('/sup', async (req, res) => {
         const token = jwt.sign({_id: newUser._id}, 'secretKey');
         res.status(200).json({token});
     }
-    res.status(200).send('User already exists');
+    res.status(401).send('User already exists');
 });    
 
 router.post('/sin', async (req,res) => {
@@ -48,7 +48,7 @@ router.post('/cursos', verifyToken, async (req, res) => {
         }); 
     }
     else
-        res.status(204).json({user});
+        res.status(401).send('Curso already exists');;
 });
 //lista de cursos
 router.get('/cursos', verifyToken, async (req, res) => {
@@ -82,7 +82,7 @@ router.post('/cursos/:name', verifyToken, async (req, res) => {
         }); 
     }
     else 
-        res.status(204).json({user});
+        res.status(401).send('Asignatura already exists');
 });
 
 //lista de asignaturas asignaturas en curso

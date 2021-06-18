@@ -1,0 +1,14 @@
+.center {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .mat-form-field{
+    width: 100%;
+  }
+  .mat-card {
+    margin-top: 7rem;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }

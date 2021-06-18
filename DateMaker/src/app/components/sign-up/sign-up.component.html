@@ -1,0 +1,31 @@
+<div class="center">
+    <mat-card>
+        <mat-card-title>Sign Up</mat-card-title>
+        <form id= "login form" (ngSubmit)="onSubmit()"ngNativeValidate>
+            <div class="container">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" [formControl]="email" [(ngModel)]="user.email" name="formemail" required>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="user.password" name="formpass" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Confirm your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="user.passwordconf" name="formpassconf" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <button type="submit" mat-raised-button>SignUp</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

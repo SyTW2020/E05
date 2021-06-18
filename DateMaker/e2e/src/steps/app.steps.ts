@@ -11,11 +11,27 @@ Before(() => {
 });
 
 Given(/^I am on the home page$/, async () => {
-  await page.navigateTo();
+  await page.navigateTo('/');
 });
 
 When(/^I do nothing$/, () => {});
 
 Then('I should see the tittle', async () => {
     assert(expect(await page.getTitleText()), 'DateMaker');
+});
+
+// test para login
+Given('I am on the login page', async () => {
+  await page.navigateTo('/login');
+});
+Then('I should see the login form', async () => {
+  assert(expect(await page.getComponent('div mat-card mat-card-title')), 'Log In');
+});
+
+// test para sign-up
+Given('I am on the signup page', async () => {
+  await page.navigateTo('/signup');
+});
+Then('I should see the signup form', async () => {
+  assert(expect(await page.getComponent('div mat-card mat-card-title')), 'Sign Up');
 });
