@@ -10,40 +10,40 @@ import { AuthService } from '../../services/auth.service';
 })
 
 export class LogInComponent implements OnInit {
+
+  constructor(private authService: AuthService, private router: Router){}
   // material
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
 
-  getErrorMessage() {
+  // funciones
+  user = {
+    email: '',
+    password: ''
+  };
+
+  getErrorMessage(): any {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
-    
+
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
-  
-  //funciones
-  user = { 
-    email: '',
-    password: ''
-  }
 
-  constructor(private authService: AuthService, private router: Router){}
+  ngOnInit(): void{
 
-  ngOnInit (){
-    
   }
 
   onSubmit(): void {
     this.authService.logIn(this.user).subscribe(
-      res => {
+      (res: any) => {
         console.log(res);
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/home'])
+        this.router.navigate(['/home']);
       },
-      err => {
-        alert(err.error)
-        console.log(err)
+      (err: any) => {
+        alert(err.error);
+        console.log(err);
       }
     );
   }

@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule} from "@angular/core";
+import { ModuleWithProviders, NgModule} from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -105,7 +105,7 @@ import { MatTreeModule } from '@angular/material/tree';
         MatTooltipModule,
         MatTreeModule,
     ],
-    providers: [     
+    providers: [
     ]
 })
 export class MaterialModule {

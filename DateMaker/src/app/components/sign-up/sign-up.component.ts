@@ -10,11 +10,20 @@ import { Router } from '@angular/router';
 })
 
 export class SignUpComponent implements OnInit {
-  //material
+
+  constructor(private authService: AuthService, private router: Router){}
+  // material
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
 
-  getErrorMessage() {
+  // functions
+  user = {
+    email: '',
+    password: '',
+    passwordconf: ''
+  };
+
+  getErrorMessage(): any {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
@@ -22,29 +31,20 @@ export class SignUpComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
-  //functions
-  user = { 
-    email: '',
-    password: '',
-    passwordconf: ''
-  }
-
-  constructor(private authService: AuthService, private router: Router){}
-  
-  ngOnInit (){
+  ngOnInit(): void{
 
   }
 
   onSubmit(): void {
     this.authService.signUp(this.user).subscribe(
-      res => {
+      (res: any) => {
         console.log(res);
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/home'])
+        this.router.navigate(['/home']);
       },
-      err => {
-        alert(err.error)
-        console.log(err)
+      (err: any) => {
+        alert(err.error);
+        console.log(err);
       }
     );
   }

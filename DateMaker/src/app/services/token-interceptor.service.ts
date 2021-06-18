@@ -7,12 +7,12 @@ import {AuthService} from '../services/auth.service';
 })
 export class TokenInterceptorService implements HttpInterceptor{
 
-  intercept(req: any,next: any) {
+  intercept(req: any, next: any): any {
     const request = req.clone({
       setHeaders: {
-        auth: 'Bearer ' + this.authService.get_token() 
+        auth: 'Bearer ' + this.authService.get_token()
       }
-    })
+    });
     return next.handle(request);
   }
 

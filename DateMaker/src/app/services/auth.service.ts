@@ -7,30 +7,32 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  //url de la API
+  // url de la API
   private URL = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  signUp (user:any) {
+  signUp(user: any): any {
     return this.http.post<any>(this.URL + '/sup', user);
   }
-  logIn (user:any) {
+  logIn(user: any): any {
     return this.http.post<any>(this.URL + '/sin', user);
   }
 
-  logged(){
-    if (localStorage.getItem('token'))
-      return true
-    else
-      return false
+  logged(): boolean {
+    if (localStorage.getItem('token')) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
-  get_token(){
+  get_token(): any{
     return localStorage.getItem('token');
   }
 
-  logout(){
+  logout(): void{
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
