@@ -22,7 +22,7 @@ Then('I should see the tittle', async () => {
 
 // test para login
 Given('I am on the login page', async () => {
-  await page.navigateTo('/log-in');
+  await page.navigateTo('/login');
 });
 Then('I should see the login form', async () => {
   assert(expect(await page.getComponent('div mat-card mat-card-title')), 'Log In');
@@ -30,7 +30,7 @@ Then('I should see the login form', async () => {
 
 // test para sign-up
 Given('I am on the signup page', async () => {
-  await page.navigateTo('/sign-up');
+  await page.navigateTo('/signup');
 });
 Then('I should see the signup form', async () => {
   assert(expect(await page.getComponent('div mat-card mat-card-title')), 'Sign Up');
