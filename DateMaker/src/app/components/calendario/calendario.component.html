@@ -1,0 +1,86 @@
+<mat-grid-list cols="1" rowHeight="6rem">
+    <mat-grid-tile>
+        <h1>Creador de Calendarios</h1>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field appearance="fill">
+            <mat-label>     Cursos   </mat-label>
+            <mat-select [(ngModel)]="selCurso">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let curso of cursos" [value]="curso">{{curso}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button (click)="get_Asignaturas()">Swap</button>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<div class="container" cdkDropListGroup>
+    <div class="cell">
+      <h2>Asignaturas</h2>
+  
+      <div
+        cdkDropList
+        [cdkDropListData]="lista"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of lista" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+  
+    <div class="cell">
+      <h2>Lunes</h2>
+  
+      <div
+        cdkDropList
+        [cdkDropListData]="lunes"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of lunes" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+    <div class="cell">
+        <h2>Martes</h2>
+    
+        <div
+          cdkDropList
+          [cdkDropListData]="martes"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of martes" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+      <div class="cell">
+        <h2>Miercoles</h2>
+    
+        <div
+          cdkDropList
+          [cdkDropListData]="miercoles"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of miercoles" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+      <div class="cell">
+        <h2>Jueves</h2>
+    
+        <div
+          cdkDropList
+          [cdkDropListData]="jueves"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of jueves" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+      <div class="cell">
+        <h2>Viernes</h2>
+    
+        <div
+          cdkDropList
+          [cdkDropListData]="viernes"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of viernes" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+  </div>

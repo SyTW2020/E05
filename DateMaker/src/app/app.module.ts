@@ -15,13 +15,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth.guard';
 import {TokenInterceptorService} from './services/token-interceptor.service';
+import { CalendarioComponent } from './components/calendario/calendario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    CalendarioComponent
   ],
   imports: [
     BrowserModule,
