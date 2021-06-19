@@ -9,28 +9,28 @@ export class CalendarioComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-  
-  selCurso: string = '';
-  get_Asignaturas(){
-    // llame a un servicio con la opcion del selector
-    console.log(this.selCurso)
-  }
+  selCurso = '';
 
 
   cursos: string[] = ['curso1', 'curso2', 'curso3'];
 
-  lista: string[]= [
+  lista: string[] = [
     'vacio'
   ];
-  lunes: string[]= [];
-  martes: string[]= [];
-  miercoles: string[]= [];
-  jueves: string[]= [];
-  viernes: string[]= [];
+  lunes: string[] = [];
+  martes: string[] = [];
+  miercoles: string[] = [];
+  jueves: string[] = [];
+  viernes: string[] = [];
 
-  drop(event: CdkDragDrop<string []>):void {
+  ngOnInit(): void {
+  }
+  get_Asignaturas(): void{
+    // llame a un servicio con la opcion del selector
+    console.log(this.selCurso);
+  }
+
+  drop(event: CdkDragDrop<string []>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
