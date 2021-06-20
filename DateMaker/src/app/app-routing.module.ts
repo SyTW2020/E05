@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
+import {CalendarioComponent} from './components/calendario/calendario.component';
 import {AuthGuard} from './auth.guard';
 
 const routes: Routes = [
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'calendario',
+    component: CalendarioComponent,
     canActivate: [AuthGuard]
   }
 ];
