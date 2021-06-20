@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+
+import { CursosService } from 'src/app/services/cursos.service';
+import {AsignaturasService} from 'src/app/services/asignaturas.service';
+import { range } from 'rxjs';
 @Component({
   selector: 'app-calendario',
   templateUrl: './calendario.component.html',
@@ -7,12 +11,12 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class CalendarioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cursosService: CursosService, private asignaturasService: AsignaturasService) { }
 
   selCurso = '';
 
 
-  cursos: string[] = ['curso1', 'curso2', 'curso3'];
+  cursos: string[] = [];
 
   lista: string[] = [
     'vacio'
@@ -24,10 +28,53 @@ export class CalendarioComponent implements OnInit {
   viernes: string[] = [];
 
   ngOnInit(): void {
+    this.cursosService.getCursos().subscribe(
+      (res: any)=> {
+        console.log(res);
+        res.user.cursos.forEach((element:any) => {
+          this.cursos.push(element.curso);
+        })
+      },
+      (err: any)=> {
+        console.log(err);
+      },
+    )
   }
   get_Asignaturas(): void{
-    // llame a un servicio con la opcion del selector
     console.log(this.selCurso);
+    this.asignaturasService.getAsignaturas(this.selCurso).subscribe(
+      (res: any) => {
+        console.log(res.user.cursos[0].asignaturas);
+        this.lista = [];
+        this.lunes = [];
+        this.martes = [];
+        this.miercoles = [];
+        this.jueves = [];
+        this.viernes = [];
+        res.user.cursos[0].asignaturas.forEach((element:any) =>{
+          const practicas:number = element.practicas
+          const teoria:number = element.teoria 
+          const grupos:number = element.grupos
+          console.log(practicas, teoria, grupos)
+         
+          var clases: string[] = [];
+          for (let i=1; i<=grupos; i++) {
+            clases.push('grupo' + i)
+          }
+          for (let j=1; j<= teoria; j++) {
+            clases.push('TE' + j) 
+          }
+          for (let k=1; k<= practicas; k++){
+            clases.push('PE' + k)
+          }
+
+          console.log(clases)
+        })
+      },
+      (err: any) => {
+        console.log(err)
+      }
+    )
   }
 
   drop(event: CdkDragDrop<string []>): void {
