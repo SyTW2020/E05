@@ -1,0 +1,21 @@
+.calendar {
+    background-color: blueviolet;
+} 
+
+.mycourses {
+    background-color: brown;
+}
+
+mat-card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    width: 80%;
+}
+
+button {
+    margin-left: 30%;
+}
