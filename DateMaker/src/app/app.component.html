@@ -1,9 +1,9 @@
 <p>
     <mat-toolbar>
-      <span>My Application</span>
+      <span>DateMaker</span>
       <span class="example-spacer"></span>
       <ng-container *ngIf="!authService.logged(); else loggedIn">
-        <a mat-button [routerLink]="['/login'] ">Log In</a>
+        <a mat-button [routerLink]="['/login']">Log In</a>
         <a mat-button [routerLink]="['/signup']">Sign Up</a>
       </ng-container>
       <ng-template #loggedIn>
@@ -11,5 +11,9 @@
       </ng-template>
     </mat-toolbar>
 </p>
+
+<mat-card class="container-wrapper">
+  <app-home></app-home>
+</mat-card>
 
 <router-outlet></router-outlet>
