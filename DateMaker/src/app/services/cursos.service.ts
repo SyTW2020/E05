@@ -10,7 +10,7 @@ export class CursosService {
 
   private URL = 'http://localhost:3000/api';
 
-  getCursos (): any {
+  getCursos(): any {
     return this.httpClient.get<any>(this.URL + '/cursos');
   }
 }

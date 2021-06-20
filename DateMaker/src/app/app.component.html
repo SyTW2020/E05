@@ -1,6 +1,6 @@
 <p>
     <mat-toolbar>
-      <span>My Application</span>
+      <span class="titulo" [routerLink]="['/home']">DateMaker</span>
       <span class="example-spacer"></span>
       <ng-container *ngIf="!authService.logged(); else loggedIn">
         <a mat-button [routerLink]="['/login'] ">Log In</a>

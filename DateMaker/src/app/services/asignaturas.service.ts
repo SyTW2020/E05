@@ -10,8 +10,9 @@ export class AsignaturasService {
 
   private URL = 'http://localhost:3000/api';
 
-  getAsignaturas (curso:string): any {
-    if(curso !== undefined)
+  getAsignaturas(curso: string): any {
+    if (curso !== undefined) {
       return this.httpClient.get<any>(this.URL + '/cursos/' + curso);
+    }
   }
 }

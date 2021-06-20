@@ -16,8 +16,9 @@
 </mat-grid-list>
 
 <div class="container" cdkDropListGroup>
-    <div class="cell">
-      <h2>Asignaturas</h2>
+  <div class="cell">
+    <h2>Asignaturas</h2>
+    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
   
       <div
         cdkDropList
@@ -26,8 +27,8 @@
         (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of lista" cdkDrag>{{item}}</div>
       </div>
+    </cdk-virtual-scroll-viewport>
     </div>
-  
     <div class="cell">
       <h2>Lunes</h2>
   
