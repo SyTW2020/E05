@@ -100,8 +100,8 @@ export class VisorComponent implements OnInit {
       }
       calendarioHTML += `</tr>`
     }
-    
-    calendario.innerHTML = calendarioHTML;
+
+    calendario!.innerHTML = calendarioHTML;
   }
 
 }
