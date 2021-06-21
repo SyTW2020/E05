@@ -73,6 +73,7 @@ export class VisorComponent implements OnInit {
             });
           });
         });
+        this.construirCalendario();
       },
       (err: any) => {
         console.log(err);
@@ -99,5 +100,8 @@ export class VisorComponent implements OnInit {
       }
       calendarioHTML += `</tr>`
     }
+    
+    calendario.innerHTML = calendarioHTML;
   }
+
 }
