@@ -1,17 +1,53 @@
-<div class="calendar">
-    <h1>Calendarios</h1>
-</div>
+<mat-grid-list cols="1" rowHeight="6rem">
+    <mat-grid-tile>
+        <h1>Creador de Calendarios</h1>
+    </mat-grid-tile>
+    
+</mat-grid-list>
 
-<div class="mycourses">
-    <h2>Mis cursos</h2>
-</div>
+<mat-grid-list cols="1" rowHeight="6rem">
+    <mat-grid-tile>
+        <h1>Mis cursos</h1>
+    </mat-grid-tile>
+</mat-grid-list>
 
 <mat-card>
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
+    <form class="add-course">
+        <mat-form-field class="add_course">
             <mat-label>Curso</mat-label>
-            <input matInput placeholder="">
+            <input matInput [(ngModel)]="course.nombre">
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="addCourse()">Agregar curso</button>
+        <button id="add-button" mat-raised-button color="primary" (click)="addCourse()">Agregar curso</button>
     </form>
 </mat-card>
+
+<div class="container" cdkDropListGroup>
+    <div class="cell">
+        <div class="courses">
+            <mat-form-field appearance="fill">
+                <mat-label>     Cursos   </mat-label>
+                <mat-select [(ngModel)]="selCurso">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let curso of courses">{{curso.nombre}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="buttons">
+            <button class="button_courses" mat-raised-button color="primary">Asignaturas</button>
+            <button class="button_courses" mat-raised-button color="accent">Planificador</button>
+            <button class="button_courses" mat-raised-button color="warn">Visor</button>   
+            
+        </div>
+
+        <div class="remove">
+            <button class="remove-button" mat-raised-button>Eliminar</button>
+        </div>
+    </div>
+</div>
+  
+
+
+
+
+
+
