@@ -39,7 +39,7 @@ export class VisorComponent implements OnInit {
       orientation: "landscape"
     });
 
-    autoTable(doc, { html: '#my-table' });
+    autoTable(doc, { html: '#calendario' });
     doc.save('calendario.pdf');
   }
 
@@ -94,7 +94,7 @@ export class VisorComponent implements OnInit {
 
     for(let i = 0; i < 6; i++) {
       calendarioHTML += `<tr>`;
-      for(let j = 0; i < 5; i++) {
+      for(let j = 0; j < 5; j++) {
         const random = Math.floor(Math.random() * this.lista.length) + 1;
         calendarioHTML += `<td>${this.lista[random]}</td>`;
       }
