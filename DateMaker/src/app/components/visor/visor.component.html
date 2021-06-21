@@ -1,0 +1,68 @@
+<mat-grid-list cols="1" rowHeight="6rem">
+  <mat-grid-tile>
+      <h1>Visor de Calendarios</h1>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <mat-form-field appearance="fill">
+          <mat-label>     Cursos   </mat-label>
+          <mat-select [(ngModel)]="selCurso">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let curso of cursos" [value]="curso">{{curso}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button (click)="window.print()">Exportar a PDF</button>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<table>
+  <tr>
+    <th>Lunes</th>
+    <th>Martes</th>
+    <th>Miercoles</th>
+    <th>Jueves</th>
+    <th>Viernes</th>
+  </tr>
+  <tr>
+    <td>Asignatura 2</td>
+    <td>Asignatura 1</td>
+    <td>Asignatura 2</td>
+    <td>Asignatura 3</td>
+    <td>Asignatura 2</td>
+  </tr>
+  <tr>
+    <td>Asignatura 1</td>
+    <td>Asignatura 2</td>
+    <td>Asignatura 3</td>
+    <td>Asignatura 1</td>
+    <td>Asignatura 4</td>
+  </tr>
+  <tr>
+    <td>Asignatura 1</td>
+    <td>Asignatura 4</td>
+    <td>Asignatura 3</td>
+    <td>Asignatura 2</td>
+    <td>Asignatura 5</td>
+  </tr>
+  <tr>
+    <td>Asignatura 4</td>
+    <td>Asignatura 2</td>
+    <td>Asignatura 1</td>
+    <td>Asignatura 3</td>
+    <td>Asignatura 1</td>
+  </tr>
+  <tr>
+    <td>Asignatura 5</td>
+    <td>Asignatura 1</td>
+    <td>Asignatura 4</td>
+    <td>Asignatura 2</td>
+    <td>Asignatura 5</td>
+  </tr>
+  <tr>
+    <td>Asignatura 3</td>
+    <td>Asignatura 2</td>
+    <td>Asignatura 5</td>
+    <td>Asignatura 4</td>
+    <td>Asignatura 1</td>
+  </tr>
+</table>
