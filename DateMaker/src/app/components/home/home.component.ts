@@ -12,8 +12,8 @@ export class HomeComponent implements OnInit {
   course : Course = {
     nombre : ""
   }
-  selCurso = '';
 
+  selCourse = '';
   constructor() { }
 
   ngOnInit(): void {
@@ -21,5 +21,14 @@ export class HomeComponent implements OnInit {
 
   addCourse() {
     this.courses.push(this.course)
+  }
+
+  removeCourse() {
+    for (var i = 0; i < this.courses.length; i++) {
+      if (this.courses[i].nombre == this.selCourse) {
+          this.courses.splice(i, 1)
+      }
+    }
+    console.log(this.courses)
   }
 }
