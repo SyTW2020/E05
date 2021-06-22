@@ -8,29 +8,29 @@
 <mat-card>
     <mat-form-field>
         <mat-label>Nombre</mat-label>
-        <input matInput cdkFocusInitial [(ngModel)]="subject.nombre"/>
+        <input matInput cdkFocusInitial [(ngModel)]="asignatura.nombre"/>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Código</mat-label>
-        <input matInput [(ngModel)]="subject.codigo"/>
+        <input matInput [(ngModel)]="asignatura.codigo"/>
     </mat-form-field>
 
 
     <mat-form-field>
         <mat-label>Horas prácticas</mat-label>
-        <input matInput [(ngModel)]="subject.h_practicas"/>
+        <input matInput [(ngModel)]="asignatura.h_practicas"/>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Horas prácticas</mat-label>
-        <input matInput [(ngModel)]="subject.h_teoricas"/>
+        <input matInput [(ngModel)]="asignatura.h_teoricas"/>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Grupos</mat-label>
-        <input matInput [(ngModel)]="subject.grupos"/>
+        <input matInput [(ngModel)]="asignatura.grupos"/>
     </mat-form-field>
 
-    <button class="add-button" mat-raised-button color="primary" (click)="addSubject()">Añadir asignatura</button>
+    <button class="add-button" mat-raised-button color="primary" (click)="addAsignatura()">Añadir asignatura</button>
 </mat-card>
