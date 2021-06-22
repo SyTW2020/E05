@@ -6,6 +6,7 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
 import {CalendarioComponent} from './components/calendario/calendario.component';
+import {VisorComponent} from './components/visor/visor.component';
 import {AuthGuard} from './auth.guard';
 
 const routes: Routes = [
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path: 'calendario',
     component: CalendarioComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'visor',
+    component: VisorComponent,
     canActivate: [AuthGuard]
   }
 ];

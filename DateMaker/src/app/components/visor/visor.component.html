@@ -1,0 +1,19 @@
+<mat-grid-list cols="1" rowHeight="6rem">
+  <mat-grid-tile>
+      <h1>Visor de Calendarios</h1>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <mat-form-field appearance="fill">
+          <mat-label>     Cursos   </mat-label>
+          <mat-select [(ngModel)]="selCurso">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let curso of cursos" [value]="curso">{{curso}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button (click)="get_Asignaturas()">Actualizar asignaturas</button>
+      <button type="submit" mat-raised-button (click)="downloadPDF()">Exportar a PDF</button>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<table class="center" id="calendario"></table>
