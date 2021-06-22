@@ -35,7 +35,7 @@ router.post('/sin', async (req,res) => {
 //crear curso
 router.post('/cursos', verifyToken, async (req, res) => {
     const {nombre} = req.body;
-    const user = await User.findOne({_id:req.userId}, {cursos:[]});
+    const user = await User.findOne({_id:req.userId});
     var flag = false;
     user.cursos.forEach(element => {
         if (element.curso == nombre)
@@ -44,7 +44,7 @@ router.post('/cursos', verifyToken, async (req, res) => {
     if (!flag) {
         user.cursos.push({curso:nombre});
         await user.save().then((user) => {
-            res.status(200).json({user});
+            res.status(200).json({user: {cursos: user.cursos} });
         }); 
     }
     else
@@ -52,15 +52,15 @@ router.post('/cursos', verifyToken, async (req, res) => {
 });
 //lista de cursos
 router.get('/cursos', verifyToken, async (req, res) => {
-    const user = await User.findOne({_id:req.userId}, {cursos:[]});
-    res.status(200).json({user});
+    const user = await User.findOne({_id:req.userId});
+    res.status(200).json({user: {cursos: user.cursos} });
 });
 //borrar curso
 router.delete('/cursos', verifyToken, async (req, res) => {
     const {nombre} = req.body;
     await User.updateOne({_id:req.userId}, {$pull: {cursos: {curso:nombre}}});
-    const user = await User.findOne({_id:req.userId}, {cursos:[]});
-    res.status(200).json({user});
+    const user = await User.findOne({_id:req.userId});
+    res.status(200).json({user: {cursos: user.cursos} });
 });
 
 
@@ -107,6 +107,25 @@ router.delete('/cursos/:name', verifyToken, async (req, res) => {
     await user.save().then((user) => {
         res.status(200).json({user});
     }); 
+});
+
+router.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
 });
 
 module.exports = router;
