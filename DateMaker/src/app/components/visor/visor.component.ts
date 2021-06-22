@@ -3,7 +3,7 @@ import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
 import { CursosService } from 'src/app/services/cursos.service';
-import {AsignaturasService} from 'src/app/services/asignaturas.service';
+import { AsignaturasService } from 'src/app/services/asignaturas.service';
 @Component({
   selector: 'app-visor',
   templateUrl: './visor.component.html',
@@ -36,7 +36,7 @@ export class VisorComponent implements OnInit {
 
   downloadPDF(): void {
     const doc = new jsPDF({
-      orientation: "landscape"
+      orientation: 'landscape'
     });
 
     autoTable(doc, { html: '#calendario' });
@@ -92,16 +92,31 @@ export class VisorComponent implements OnInit {
     <th>Viernes</th>
   </tr>`;
 
-    for(let i = 0; i < 6; i++) {
+    for (let i = 0; i < 6; i++) {
       calendarioHTML += `<tr>`;
-      for(let j = 0; j < 5; j++) {
+      for (let j = 0; j < 5; j++) {
         const random = Math.floor(Math.random() * this.lista.length - 1) + 1;
         calendarioHTML += `<td>${this.lista[random]}</td>`;
+        this.lista.splice(random, 1);
       }
-      calendarioHTML += `</tr>`
+      calendarioHTML += `</tr>`;
     }
 
-    calendario!.innerHTML = calendarioHTML;
+    calendarioHTML += `<style>
+    td, th {
+      border: 1px solid black;
+      text-align: center;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: lightgray;
+    }
+    </style>`;
+
+    if (calendario) {
+      calendario.innerHTML = calendarioHTML;
+    }
   }
 
 }
