@@ -1,0 +1,36 @@
+<mat-grid-list cols="1" rowHeight="6rem">
+    <mat-grid-tile>
+        <h1>Creador de Calendarios</h1>
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+<mat-card>
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput cdkFocusInitial [(ngModel)]="asignatura.nombre"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Código</mat-label>
+        <input matInput [(ngModel)]="asignatura.codigo"/>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Horas prácticas</mat-label>
+        <input matInput [(ngModel)]="asignatura.h_practicas"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Horas prácticas</mat-label>
+        <input matInput [(ngModel)]="asignatura.h_teoricas"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Grupos</mat-label>
+        <input matInput [(ngModel)]="asignatura.grupos"/>
+    </mat-form-field>
+
+    <button class="add-button" mat-raised-button color="primary" (click)="addAsignatura()">Añadir asignatura</button>
+</mat-card>

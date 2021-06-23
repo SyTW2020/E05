@@ -16,6 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth.guard';
 import {TokenInterceptorService} from './services/token-interceptor.service';
 import { CalendarioComponent } from './components/calendario/calendario.component';
+import { AsignaturasComponent } from './components/asignaturas/asignaturas.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
     LogInComponent,
     SignUpComponent,
     HomeComponent,
-    CalendarioComponent
+    CalendarioComponent,
+    AsignaturasComponent
   ],
   imports: [
     BrowserModule,
