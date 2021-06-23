@@ -14,11 +14,13 @@ router.post('/sup', async (req, res) => {
         const newUser = User({email, password});
         await newUser.save();
         
+        if(newUser) {
         const token = jwt.sign({_id: newUser._id}, 'secretKey');
-        res.status(200).json({token});
+        return res.status(200).json({token});
+        }
     }
     else {
-        res.status(401).send('User already exists');
+        return res.status(401).send('User already exists');
     }
 });    
 
