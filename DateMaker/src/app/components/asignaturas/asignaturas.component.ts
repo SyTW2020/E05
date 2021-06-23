@@ -20,19 +20,29 @@ export class AsignaturasComponent implements OnInit {
     grupos : ""
   }; 
 
+
+  selcurso = '';
   displayedColumns: string[] = ['nombre', 'codigo', 'h_practicas', 'h_teoricas', 'grupos', 'eliminar'];
   dataSource = this.asignaturas
 
   constructor(private asignaturasService: AsignaturasService) { }
 
   ngOnInit(): void { 
-
+    this.asignaturasService.getAsignaturas(this.selcurso).subscribe(
+      (res: any) => {
+        console.log(res);
+        res.user.asignaturas.forEach((element: any) => {
+          this.asignaturas.push(element.asignatura);
+        });
+      },
+      (err: any) => {
+        console.log(err);
+      },
+    );
     
   }
 
-
   addAsignatura() {
-    this.asignaturas.push(this.asignatura)
     this.asignaturasService.addAsignatura(this.asignatura.nombre, this.asignatura.codigo, this.asignatura.h_practicas, this.asignatura.h_teoricas, this.asignatura.grupos)
 
   }
