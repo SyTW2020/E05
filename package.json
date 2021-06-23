@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "build": "cd DateMaker && npm run ng build && cd .. && node index.js"
+    "build": "node index.js"
   },
   "keywords": [],
   "author": "",
