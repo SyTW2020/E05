@@ -5,7 +5,8 @@
   "main": "index.js",
   "engines": {
     "node": "15.x",
-    "npm": "7.x"
+    "npm": "7.x",
+    "angular": "11.x"
   },
   "scripts": {
     "start": "node index.js",
