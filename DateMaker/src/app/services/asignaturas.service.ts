@@ -15,4 +15,16 @@ export class AsignaturasService {
       return this.httpClient.get<any>(this.URL + '/cursos/' + curso);
     }
   }
+
+  put(asignatura : string) {
+    return this.httpClient.put(this.URL + '/asignaturas', asignatura)
+  }
+
+  post(asignatura : string) {
+    return this.httpClient.post(this.URL + '/asignaturas', asignatura)
+  }
+
+  delete() {
+    return this.httpClient.delete(this.URL + '/asignaturas')
+  }
 }

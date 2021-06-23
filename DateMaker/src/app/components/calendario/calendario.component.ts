@@ -3,7 +3,8 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 
 import { CursosService } from 'src/app/services/cursos.service';
 import {AsignaturasService} from 'src/app/services/asignaturas.service';
-import { range } from 'rxjs';
+
+
 @Component({
   selector: 'app-calendario',
   templateUrl: './calendario.component.html',

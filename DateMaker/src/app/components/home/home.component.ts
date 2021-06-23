@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Course } from './course';
+import { CursosService } from 'src/app/services/cursos.service';
 
 @Component({
   selector: 'app-home',
@@ -8,27 +8,35 @@ import { Course } from './course';
 })
 export class HomeComponent implements OnInit {
 
-  courses : Course[] = []
-  course : Course = {
-    nombre : ""
-  }
+  cursos : string[] = []
 
-  selCourse = '';
-  constructor() { }
+  selcurso = '';
+  constructor(private cursosService: CursosService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    this.cursosService.getCursos().subscribe(
+      (res: any) => {
+        console.log(res);
+        res.user.cursos.forEach((element: any) => {
+          this.cursos.push(element.curso);
+        });
+      },
+      (err: any) => {
+        console.log(err);
+      },
+    );
   }
 
   addCourse() {
-    this.courses.push(this.course)
+    this.cursosService.post(this.selcurso)
   }
 
   removeCourse() {
-    for (var i = 0; i < this.courses.length; i++) {
-      if (this.courses[i].nombre == this.selCourse) {
-          this.courses.splice(i, 1)
+    for (var i = 0; i < this.cursos.length; i++) {
+      if (this.cursos[i] == this.selcurso) {
+          this.cursos.splice(i, 1)
       }
     }
-    console.log(this.courses)
+    console.log(this.cursos)
   }
 }
