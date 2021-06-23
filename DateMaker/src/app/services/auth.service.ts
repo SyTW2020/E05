@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   // url de la API
-  private URL = 'http://localhost:3000/api';
+  private URL = 'https://e05-sytw.herokuapp.com//api';
 
   constructor(private http: HttpClient, private router: Router) { }
 
