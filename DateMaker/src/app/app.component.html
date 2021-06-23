@@ -3,11 +3,11 @@
       <span class="titulo" [routerLink]="['/home']">DateMaker</span>
       <span class="example-spacer"></span>
       <ng-container *ngIf="!authService.logged(); else loggedIn">
-        <a mat-button [routerLink]="['/login'] ">Log In</a>
+        <a mat-button [routerLink]="['/login']">Log In</a>
         <a mat-button [routerLink]="['/signup']">Sign Up</a>
       </ng-container>
       <ng-template #loggedIn>
-        <a mat-button [routerLink]="['/home'] ">Home</a>
+        <a mat-button [routerLink]="['/home']">Home</a>
         <a mat-button color="warn"(click)="authService.logout()">Logout</a>
       </ng-template>
     </mat-toolbar>
