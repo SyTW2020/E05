@@ -10,17 +10,13 @@ router.post('/sup', async (req, res) => {
     const {email, password, passwordconf} = req.body;
     if (password !== passwordconf) return res.status(401).send('Passwords dont match');
     const user = await User.findOne({email});
-    res.header("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "PATCH, POST, GET, PUT, DELETE, OPTIONS");   
+
     if (!user){
         const newUser = User({email, password});
         await newUser.save();
-        
-        if(newUser) {
-            jwt.sign({_id: newUser._id}, 'secretKey', (err, token) => {
-                res.status(200).json({token});
-            });
-        }
+
+        const token = jwt.sign({_id: newUser._id}, 'secretKey');
+        res.status(200).json({token});
     }
     else {
         res.status(401).send('User already exists');
@@ -114,6 +110,25 @@ router.delete('/cursos/:name', verifyToken, async (req, res) => {
     await user.save().then((user) => {
         res.status(200).json({user});
     }); 
+});
+
+router.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
 });
 
 module.exports = router;
