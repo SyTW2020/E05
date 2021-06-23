@@ -24,7 +24,7 @@ import { AsignaturasComponent } from './components/asignaturas/asignaturas.compo
     LogInComponent,
     SignUpComponent,
     HomeComponent,
-    AsignaturasComponent
+    AsignaturasComponent,
     CalendarioComponent,
     VisorComponent
   ],
