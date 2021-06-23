@@ -8,6 +8,8 @@
       </ng-container>
       <ng-template #loggedIn>
         <a mat-button [routerLink]="['/home'] ">Home</a>
+        <a mat-button [routerLink]="['/calendario'] ">Calendario</a>
+        <a mat-button [routerLink]="['/visor'] ">Visor</a>
         <a mat-button color="warn"(click)="authService.logout()">Logout</a>
       </ng-template>
     </mat-toolbar>
