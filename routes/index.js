@@ -10,6 +10,8 @@ router.post('/sup', async (req, res) => {
     const {email, password, passwordconf} = req.body;
     if (password !== passwordconf) return res.status(401).send('Passwords dont match');
     const user = await User.findOne({email});
+    res.header("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "PATCH, POST, GET, PUT, DELETE, OPTIONS");   
     if (!user){
         const newUser = User({email, password});
         await newUser.save();
