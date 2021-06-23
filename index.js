@@ -6,7 +6,7 @@ require('./database');
 
 app.use(cors());
 
-app.use(express.static(process.cwd()+"../../dist"));
+app.use(express.static(process.cwd()+"/dist"));
 app.use(express.json());
 
 app.use('/api', require('./routes/index'));
