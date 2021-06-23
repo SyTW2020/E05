@@ -28,15 +28,10 @@ export class HomeComponent implements OnInit {
   }
 
   addCourse() {
-    this.cursosService.post(this.selcurso)
+    this.cursosService.addCurso(this.selcurso)
   }
 
   removeCourse() {
-    for (var i = 0; i < this.cursos.length; i++) {
-      if (this.cursos[i] == this.selcurso) {
-          this.cursos.splice(i, 1)
-      }
-    }
-    console.log(this.cursos)
+    this.cursosService.deleteCurso(this.selcurso)
   }
 }

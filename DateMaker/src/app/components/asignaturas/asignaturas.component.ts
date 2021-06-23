@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Asignatura } from './asignatura';
+import { Asignatura } from './asignatura'; 
+import { AsignaturasService } from 'src/app/services/asignaturas.service';
 
 @Component({
   selector: 'app-asignaturas',
@@ -14,19 +15,30 @@ export class AsignaturasComponent implements OnInit {
   asignatura : Asignatura = {
     nombre : "",
     codigo : "",
-    h_practicas : undefined,
-    h_teoricas : undefined,
+    h_practicas : 0,
+    h_teoricas : 0,
     grupos : ""
   }; 
 
-  constructor() { }
+  displayedColumns: string[] = ['nombre', 'codigo', 'h_practicas', 'h_teoricas', 'grupos', 'eliminar'];
+  dataSource = this.asignaturas
 
-  ngOnInit(): void {
+  constructor(private asignaturasService: AsignaturasService) { }
+
+  ngOnInit(): void { 
+
+    
   }
 
 
   addAsignatura() {
     this.asignaturas.push(this.asignatura)
+    this.asignaturasService.addAsignatura(this.asignatura.nombre, this.asignatura.codigo, this.asignatura.h_practicas, this.asignatura.h_teoricas, this.asignatura.grupos)
+
+  }
+
+  removeAsignatura() {
+    this.asignaturasService.deleteAsignatura(this.asignatura)
   }
 
 }

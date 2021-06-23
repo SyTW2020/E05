@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CursosService {
+
+  
 
   constructor(private httpClient: HttpClient) {
   }
@@ -15,15 +18,11 @@ export class CursosService {
     return this.httpClient.get<any>(this.URL + '/cursos');
   }
 
-  put(data : string) {
-    return this.httpClient.put(this.URL + '/cursos', data)
+  addCurso(curso : string) {
+    return this.httpClient.post(this.URL + '/cursos', curso)
   }
 
-  post(data : string) {
-    return this.httpClient.post(this.URL + '/cursos', data)
-  }
-
-  delete() {
-    return this.httpClient.delete(this.URL + '/cursos')
+  deleteCurso(curso : string) {
+    //return this.httpClient.delete(this.URL + '/cursos', curso)
   }
 }

@@ -5,8 +5,8 @@ export interface Curso {
 export interface Asignatura {
     nombre : string;
     codigo : string;
-    h_practicas : number | undefined;
-    h_teoricas : number | undefined;
+    h_practicas : number;
+    h_teoricas : number;
     grupos : string;
 
 }

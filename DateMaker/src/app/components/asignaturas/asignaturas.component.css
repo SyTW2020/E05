@@ -1,4 +1,4 @@
-mat-card {
+.add {
     width: 80%;
     display: flex;
     justify-content: space-evenly;
@@ -10,4 +10,12 @@ mat-card {
     color: white;
     width: 15%;
     height: 30%;
+}
+
+
+table {
+    margin-top: 20px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
 }

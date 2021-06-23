@@ -7,6 +7,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
 import {CalendarioComponent} from './components/calendario/calendario.component';
 import {AuthGuard} from './auth.guard';
+import { AsignaturasComponent } from './components/asignaturas/asignaturas.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path: 'calendario',
     component: CalendarioComponent,
+    canActivate: [AuthGuard]
+  }, 
+  {
+    path: 'asignaturas',
+    component: AsignaturasComponent,
     canActivate: [AuthGuard]
   }
 ];
