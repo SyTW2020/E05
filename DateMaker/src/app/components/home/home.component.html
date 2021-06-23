@@ -1,1 +1,55 @@
-<p>home works!</p>
+<mat-grid-list cols="1" rowHeight="6rem">
+    <mat-grid-tile>
+        <h1>Creador de Calendarios</h1>
+    </mat-grid-tile>
+    
+</mat-grid-list>
+
+<mat-grid-list cols="1" rowHeight="6rem">
+    <mat-grid-tile>
+        <h1>Mis cursos</h1>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<mat-card>
+    <form class="add-course">
+        <mat-form-field class="add_course">
+            <mat-label>Curso</mat-label>
+            <input matInput [(ngModel)]="selcurso" name="curso">
+        </mat-form-field>
+        <button id="add-button" mat-raised-button color="primary" (click)="addCourse()">Agregar curso</button>
+    </form>
+</mat-card>
+
+<div class="container" cdkDropListGroup>
+    <div class="cell">
+        <div class="courses">
+            <mat-form-field appearance="fill">
+                <mat-label>     Cursos   </mat-label>
+                <mat-select [(ngModel)]="selcurso">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let curso of cursos">{{curso}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        
+        <div class="buttons">
+            <button class="button_courses" mat-raised-button color="primary" [routerLink]="['/asignaturas']">Asignaturas</button>
+            <button class="button_courses" mat-raised-button color="accent" [routerLink]="['/calendario']">Planificador</button>
+            <button class="button_courses" mat-raised-button color="warn">Visor</button>   
+            
+        </div>
+
+    </div>
+
+        <div class="remove">
+            <button class="remove-button" mat-raised-button (click)="removeCourse()">Eliminar</button>
+        </div>
+    </div>
+</div>
+  
+
+
+
+
+
+

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 import { CursosService } from 'src/app/services/cursos.service';
-import {AsignaturasService} from 'src/app/services/asignaturas.service';
-import { range } from 'rxjs';
+import { AsignaturasService } from 'src/app/services/asignaturas.service';
+
+
 @Component({
   selector: 'app-calendario',
   templateUrl: './calendario.component.html',
