@@ -7,12 +7,10 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class CursosService {
 
-  
-
   constructor(private httpClient: HttpClient) {
   }
 
-  private URL = 'http://localhost:3000/api';
+  private URL = 'https://e05-sytw.herokuapp.com/api';
 
   getCursos(): any {
     return this.httpClient.get<any>(this.URL + '/cursos');

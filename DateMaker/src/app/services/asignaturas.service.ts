@@ -9,8 +9,8 @@ import { Asignatura } from '../components/asignaturas/asignatura';
 export class AsignaturasService {
 
   constructor(private httpClient: HttpClient) { }
-
-  private URL = 'http://localhost:3000/api';
+  
+  private URL = 'https://e05-sytw.herokuapp.com/api';
 
   getAsignaturas(curso: string): any {
     if (curso !== undefined) {
