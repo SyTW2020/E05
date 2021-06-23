@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "build": "cd DateMaker && npm run build"
+    "build": "cd DateMaker && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
