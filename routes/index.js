@@ -15,7 +15,7 @@ router.post('/sup', async (req, res) => {
         await newUser.save();
         
         if(newUser) {
-        const token = jwt.sign({_id: newUser._id}, 'secretKey');
+        const token = await jwt.sign({_id: newUser._id}, 'secretKey');
         return res.status(200).json({token});
         }
     }
