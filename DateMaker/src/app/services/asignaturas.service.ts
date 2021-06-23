@@ -8,7 +8,7 @@ export class AsignaturasService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private URL = 'https://e05-sytw.herokuapp.com//api';
+  private URL = 'https://e05-sytw.herokuapp.com/api';
 
   getAsignaturas(curso: string): any {
     if (curso !== undefined) {
