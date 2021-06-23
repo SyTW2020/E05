@@ -233,7 +233,7 @@ __webpack_require__.r(__webpack_exports__);
 class AsignaturasService {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        this.URL = 'http://localhost:3000/api';
+        this.URL = 'https://e05-sytw.herokuapp.com/api';
     }
     getAsignaturas(curso) {
         if (curso !== undefined) {
@@ -1061,7 +1061,7 @@ class AuthService {
         this.http = http;
         this.router = router;
         // url de la API
-        this.URL = 'http://localhost:3000/api';
+        this.URL = 'https://e05-sytw.herokuapp.com/api';
     }
     signUp(user) {
         return this.http.post(this.URL + '/sup', user);
@@ -1691,7 +1691,7 @@ __webpack_require__.r(__webpack_exports__);
 class CursosService {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        this.URL = 'http://localhost:3000/api';
+        this.URL = 'https://e05-sytw.herokuapp.com/api';
     }
     getCursos() {
         return this.httpClient.get(this.URL + '/cursos');
