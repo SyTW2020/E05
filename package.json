@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "15.x",
+    "npm": "7.x",
+    "angular": "11.x"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "build": "cd DateMaker && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
