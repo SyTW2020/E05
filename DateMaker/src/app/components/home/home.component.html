@@ -15,7 +15,7 @@
     <form class="add-course">
         <mat-form-field class="add_course">
             <mat-label>Curso</mat-label>
-            <input matInput [(ngModel)]="selcurso" name="curso">
+            <input matInput placeholder="Curso" [(ngModel)]="curso.nombre" name="curso">
         </mat-form-field>
         <button id="add-button" mat-raised-button color="primary" (click)="addCourse()">Agregar curso</button>
     </form>
@@ -27,9 +27,9 @@
         <div class="courses">
             <mat-form-field appearance="fill">
                 <mat-label>     Cursos   </mat-label>
-                <mat-select [(ngModel)]="selcurso">
-                    <mat-option>None</mat-option>
-                    <mat-option *ngFor="let curso of cursos">{{curso}}</mat-option>
+                <mat-select [(ngModel)]="curso.nombre">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let curso of cursos" [value]="curso">{{curso}}</mat-option>
                 </mat-select>
             </mat-form-field>
         

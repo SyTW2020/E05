@@ -15,8 +15,8 @@ export class AsignaturasComponent implements OnInit {
   asignatura : Asignatura = {
     nombre : "",
     codigo : "",
-    h_practicas : 0,
-    h_teoricas : 0,
+    practicas : 0,
+    teoria : 0,
     grupos : ""
   }; 
 
@@ -34,8 +34,8 @@ export class AsignaturasComponent implements OnInit {
           var asig_ : Asignatura = {
             nombre : element.nombre,
             codigo : element.codigo,
-            h_practicas : element.practicas,
-            h_teoricas : element.teoricas,
+            practicas : element.practicas,
+            teoria : element.teoria,
             grupos : element.grupos,
           }
           this.asignaturas.push(asig_)
@@ -49,12 +49,11 @@ export class AsignaturasComponent implements OnInit {
   }
 
   addAsignatura() {
-    this.asignaturasService.addAsignatura(this.selCurso, this.asignatura.nombre, this.asignatura.codigo, this.asignatura.h_practicas, this.asignatura.h_teoricas, this.asignatura.grupos)
-
+    this.asignaturasService.addAsignatura(this.selCurso, this.asignatura)
   }
 
   removeAsignatura() {
-    this.asignaturasService.deleteAsignatura(this.selCurso, this.asignatura.nombre)
+    this.asignaturasService.deleteAsignatura(this.selCurso, this.asignatura)
   }
 
 }

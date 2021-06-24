@@ -14,6 +14,7 @@ export class AsignaturasService {
   constructor(private httpClient: HttpClient) { }
   
   private URL = 'https://e05-sytw.herokuapp.com/api';
+  // private URL = 'http://localhost:3000/api';
 
   getAsignaturas(curso: string): any {
     if (curso !== undefined) {
@@ -21,14 +22,11 @@ export class AsignaturasService {
     }
   }
 
-  addAsignatura(curso : string, nombre : string, codigo : string, h_practicas : number, h_teoricas : number, grupos : string) {
-    const header = { nombre , codigo, h_practicas, h_teoricas, grupos }
-    return this.httpClient.post(this.URL + '/cursos/' + curso, header);
+  addAsignatura(curso : string, asig : any): any {
+    return this.httpClient.post<any>(this.URL + '/cursos/' + curso, asig);
   }
 
-  deleteAsignatura(curso: string, asignatura : any) {
-    let params = new HttpParams();
-    params = params.append('asignatura' , asignatura)
-    return this.httpClient.delete(this.URL + '/cursos/' + curso, { params })
+  deleteAsignatura(curso: string, asig : any): any {
+    return this.httpClient.request<any>('DELETE',this.URL + '/cursos/' + curso, {body: asig})
   }
 }
