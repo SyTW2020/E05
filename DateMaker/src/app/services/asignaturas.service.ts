@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { Asignatura } from '../components/asignaturas/asignatura';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AsignaturasService {
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(private httpClient: HttpClient) { }
   
@@ -18,12 +21,14 @@ export class AsignaturasService {
     }
   }
 
-  addAsignatura(nombre : string, codigo : string, h_practicas : number, h_teoricas : number, grupos : string) {
+  addAsignatura(curso : string, nombre : string, codigo : string, h_practicas : number, h_teoricas : number, grupos : string) {
     const header = { nombre , codigo, h_practicas, h_teoricas, grupos }
-    return this.httpClient.post(this.URL + '/asignaturas', header);
+    return this.httpClient.post(this.URL + '/cursos/' + curso, header);
   }
 
-  deleteAsignatura(asignatura : Asignatura) {
-    //return this.httpClient.post(this.URL + '/asignaturas', asignatura);
+  deleteAsignatura(curso: string, asignatura : any) {
+    let params = new HttpParams();
+    params = params.append('asignatura' , asignatura)
+    return this.httpClient.delete(this.URL + '/cursos/' + curso, { params })
   }
 }

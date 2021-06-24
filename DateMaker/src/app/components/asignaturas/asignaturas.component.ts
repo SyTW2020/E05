@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Asignatura } from './asignatura'; 
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
 
@@ -20,35 +20,41 @@ export class AsignaturasComponent implements OnInit {
     grupos : ""
   }; 
 
-
-  selcurso = '';
+  selCurso = ''
   displayedColumns: string[] = ['nombre', 'codigo', 'h_practicas', 'h_teoricas', 'grupos', 'eliminar'];
   dataSource = this.asignaturas
 
   constructor(private asignaturasService: AsignaturasService) { }
 
   ngOnInit(): void { 
-    this.asignaturasService.getAsignaturas(this.selcurso).subscribe(
+    this.asignaturasService.getAsignaturas(this.selCurso).subscribe(
       (res: any) => {
-        console.log(res);
-        res.user.asignaturas.forEach((element: any) => {
-          this.asignaturas.push(element.asignatura);
+        console.log(res.user.cursos[0].asignaturas);
+        res.user.cursos[0].asignaturas.forEach((element: any) => {
+          var asig_ : Asignatura = {
+            nombre : element.nombre,
+            codigo : element.codigo,
+            h_practicas : element.practicas,
+            h_teoricas : element.teoricas,
+            grupos : element.grupos,
+          }
+          this.asignaturas.push(asig_)
         });
       },
       (err: any) => {
         console.log(err);
-      },
+      }
     );
     
   }
 
   addAsignatura() {
-    this.asignaturasService.addAsignatura(this.asignatura.nombre, this.asignatura.codigo, this.asignatura.h_practicas, this.asignatura.h_teoricas, this.asignatura.grupos)
+    this.asignaturasService.addAsignatura(this.selCurso, this.asignatura.nombre, this.asignatura.codigo, this.asignatura.h_practicas, this.asignatura.h_teoricas, this.asignatura.grupos)
 
   }
 
   removeAsignatura() {
-    this.asignaturasService.deleteAsignatura(this.asignatura)
+    this.asignaturasService.deleteAsignatura(this.selCurso, this.asignatura.nombre)
   }
 
 }
