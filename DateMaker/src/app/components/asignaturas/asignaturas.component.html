@@ -19,12 +19,12 @@
 
     <mat-form-field>
         <mat-label>Horas prácticas</mat-label>
-        <input matInput [(ngModel)]="asignatura.h_practicas"/>
+        <input matInput [(ngModel)]="asignatura.practicas"/>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Horas prácticas</mat-label>
-        <input matInput [(ngModel)]="asignatura.h_teoricas"/>
+        <input matInput [(ngModel)]="asignatura.teoria"/>
     </mat-form-field>
 
     <mat-form-field>
@@ -52,13 +52,13 @@
         <!-- Columna Horas practicas -->
         <ng-container matColumnDef="h_practicas">
           <th mat-header-cell *matHeaderCellDef> Horas prácticas </th>
-          <td mat-cell *matCellDef="let element"> {{element.h_practicas}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.practicas}} </td>
         </ng-container>
       
         <!-- Columna Horas teoricas -->
         <ng-container matColumnDef="h_teoricas">
           <th mat-header-cell *matHeaderCellDef> Horas teóricas </th>
-          <td mat-cell *matCellDef="let element"> {{element.h_teoricas}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.teoria}} </td>
         </ng-container>
 
         <!-- Columna Horas teoricas -->
@@ -71,7 +71,7 @@
         <ng-container matColumnDef="eliminar">
             <th mat-header-cell *matHeaderCellDef> Eliminar </th>
             <td mat-cell *matCellDef="let element"> 
-                <button mat-raised-button (click)="removeAsignatura()">Eliminar</button>
+                <button mat-raised-button (click)="removeAsignatura(element)">Eliminar</button>
             </td>
         </ng-container>
 

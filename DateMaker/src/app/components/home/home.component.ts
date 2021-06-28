@@ -10,13 +10,17 @@ export class HomeComponent implements OnInit {
 
   cursos : string[] = []
 
-  selcurso = '';
+  curso = {
+    nombre: ''
+  };
+
   constructor(private cursosService: CursosService) { }
 
   ngOnInit(): void { 
     this.cursosService.getCursos().subscribe(
       (res: any) => {
         console.log(res);
+        this.cursos = [];
         res.user.cursos.forEach((element: any) => {
           this.cursos.push(element.curso);
         });
@@ -28,10 +32,34 @@ export class HomeComponent implements OnInit {
   }
 
   addCourse() {
-    this.cursosService.addCurso(this.selcurso)
+    console.log(this.curso)
+    this.cursosService.addCurso(this.curso).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.cursos = [];
+        res.user.cursos.forEach((element: any) => {
+          this.cursos.push(element.curso);
+        });
+      },
+      (err: any) => {
+        console.log(err);
+      },
+    );
   }
 
   removeCourse() {
-    this.cursosService.deleteCurso(this.selcurso)
+    console.log(this.curso)
+    this.cursosService.deleteCurso(this.curso).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.cursos = [];
+        res.user.cursos.forEach((element: any) => {
+          this.cursos.push(element.curso);
+        });
+      },
+      (err: any) => {
+        console.log(err);
+      },
+    );
   }
 }

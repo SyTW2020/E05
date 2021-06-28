@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Asignatura } from './asignatura'; 
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-asignaturas',
@@ -15,8 +16,8 @@ export class AsignaturasComponent implements OnInit {
   asignatura : Asignatura = {
     nombre : "",
     codigo : "",
-    h_practicas : 0,
-    h_teoricas : 0,
+    practicas : 0,
+    teoria : 0,
     grupos : ""
   }; 
 
@@ -24,21 +25,22 @@ export class AsignaturasComponent implements OnInit {
   displayedColumns: string[] = ['nombre', 'codigo', 'h_practicas', 'h_teoricas', 'grupos', 'eliminar'];
   dataSource = this.asignaturas
 
-  constructor(private asignaturasService: AsignaturasService) { }
+  constructor(private asignaturasService: AsignaturasService, private rutaActiva : ActivatedRoute) { }
 
   ngOnInit(): void { 
+    this.selCurso = this.rutaActiva.snapshot.params.curso
     this.asignaturasService.getAsignaturas(this.selCurso).subscribe(
       (res: any) => {
         console.log(res.user.cursos[0].asignaturas);
         res.user.cursos[0].asignaturas.forEach((element: any) => {
-          var asig_ : Asignatura = {
+          var asig : Asignatura = {
             nombre : element.nombre,
             codigo : element.codigo,
-            h_practicas : element.practicas,
-            h_teoricas : element.teoricas,
+            practicas : element.practicas,
+            teoria : element.teoria,
             grupos : element.grupos,
           }
-          this.asignaturas.push(asig_)
+          this.asignaturas.push(asig)
         });
       },
       (err: any) => {
@@ -49,12 +51,34 @@ export class AsignaturasComponent implements OnInit {
   }
 
   addAsignatura() {
-    this.asignaturasService.addAsignatura(this.selCurso, this.asignatura.nombre, this.asignatura.codigo, this.asignatura.h_practicas, this.asignatura.h_teoricas, this.asignatura.grupos)
-
+    this.asignaturasService.addAsignatura(this.selCurso, this.asignatura).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.asignaturas = [];
+        res.user.asignaturas.forEach((element: any) => {
+          this.asignaturas.push(element.asignatura);
+        });
+      },
+      (err: any) => {
+        console.log(err);
+      },
+    );
   }
 
-  removeAsignatura() {
-    this.asignaturasService.deleteAsignatura(this.selCurso, this.asignatura.nombre)
+  removeAsignatura(asignatura : Asignatura) {
+    console.log(this.selCurso)
+    this.asignaturasService.deleteAsignatura(this.selCurso, asignatura).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.asignaturas = [];
+        res.user.asignaturas.forEach((element: any) => {
+          this.asignaturas.push(element.asignatura);
+        });
+      },
+      (err: any) => {
+        console.log(err);
+      },
+    );
   }
 
 }
